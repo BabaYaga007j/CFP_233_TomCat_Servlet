@@ -29,18 +29,24 @@ public class LogInServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         boolean userResult = getValidation(username, RegLogIn.USERNAME_START_WITH_CAPITAL.getConstant()).find();
-
-        if (!userResult) {
-            errorPrint("Invalid Username", request, response);
-        } else {
-            if (username.equals("Soumya") && password.equals("password")) {
+        boolean passwordResult = getValidation(password, RegLogIn.PASSWORD_HAVE_ONE_SPECIAL_CHARACHTER.getConstant()).find();
+        if (!userResult || !passwordResult) {
+            if(!userResult && !passwordResult){
+                errorPrint("Invalid Username and Password both",request,response);
+            } else if(!userResult){
+                errorPrint("Invalid Username",request,response);
+            } else {
+                errorPrint("Invalid Password",request,response);
+            }
+        }else{
+            if(username.equals("Soumya") && password.equals("baba@007")){
                 HttpSession session = request.getSession();
 
-                session.setAttribute("username", username);
+                session.setAttribute("username",username);
                 response.sendRedirect("success.jsp");
 
-            } else {
-                errorPrint("Incorrect Credentials", request, response);
+            }else {
+                errorPrint("Incorrect Credentials",request,response);
             }
         }
     }
