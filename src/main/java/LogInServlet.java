@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebServlet("/Login")
+@WebServlet("/LogInServlet")
 public class LogInServlet extends HttpServlet {
     private static Matcher getValidation(String input, String regexPattern) {
         Pattern pattern = Pattern.compile(regexPattern);
@@ -43,7 +43,7 @@ public class LogInServlet extends HttpServlet {
                 HttpSession session = request.getSession();
 
                 session.setAttribute("username",username);
-                response.sendRedirect("success.jsp");
+                response.sendRedirect("sucess.jsp");
 
             }else {
                 errorPrint("Incorrect Credentials",request,response);
