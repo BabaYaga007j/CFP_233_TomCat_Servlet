@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<form action="LoginServlet" method="post">
+    <h2>User Registration Form</h2>
+    <table>
+        <tr>
+            <td>
+                <b> Username:</b>
+            </td>
+            <td>
+                <input type="text" name="user" placeholder="Enter Username" required />
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td>
+                <b>Password:</b>
+            </td>
+            <td>
+                <input type="password" name="password"  placeholder="Enter Password" id="myInput" required />
+                <br>
+                <input type="checkbox" onclick="myFunction()" />Show Password
+                <script>
+                function myFunction() {
+                          var x = document.getElementById("myInput");
+                          if (x.type === "password") {
+                            x.type = "text";
+                          } else {
+                            x.type = "password";
+                          }
+                        }
+            </script>
+            </td>
+        </tr>
+        <br>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Login" />
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
